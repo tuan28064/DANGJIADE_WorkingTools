@@ -12,18 +12,18 @@ if [[ ! -f $FILE_PATH ]]; then
 fi
 
 # 创建文件夹
-for name in `cat $FILE_PATH`
-do 
+cat $FILE_PATH | while read line
+do
 	#
-	if [[ -d $CURRENT_PATH/$name ]]; then
+	if [[ -d $CURRENT_PATH/$line ]]; then
 		echo "文件夹已存在，无需创建"
 	fi
 
 	# 创建
-	mkdir "$CURRENT_PATH/$name"
+	mkdir "$CURRENT_PATH/$line"
 
 	#
-	if [[ ! -d $CURRENT_PATH/$name ]]; then
+	if [[ ! -d $CURRENT_PATH/$line ]]; then
 		echo "创建文件夹失败"
 		exit -1
 	fi
