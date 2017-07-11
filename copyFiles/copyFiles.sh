@@ -15,7 +15,7 @@ fi
 
 # 检查文件夹
 if [[ ! -d $DIR_PATH ]]; then
-	echo "### 文件夹缺失，无法移动相关文件"
+	echo "### 文件夹缺失，无法移动相关文件 ###"
 	exit -1
 fi
 
@@ -24,7 +24,7 @@ cat $FILE_PATH | while read dirName
 do
 	# 判断目标文件夹是否已创建
 	if [[ ! -d $CURRENT_PATH/$dirName ]]; then
-		echo "目标文件夹不存在，无法拷贝文件"
+		echo "### 目标文件夹不存在，无法拷贝文件 ###"
 		echo "请先创建目标文件夹"
 		exit -1
 	fi
@@ -40,4 +40,4 @@ do
 	done
 done
 
-echo "移动完毕~"
+echo "拷贝完毕~ 🤗"
