@@ -29,15 +29,20 @@ do
 		exit -1
 	fi
 
+	# 截取名称
+	dir_name=${dirName#*《}
+	dir_name=${dir_name%》*}
+
 	# 匹配文件
 	ls $DIR_PATH | while read fileName
 	do
-		if [[ $fileName =~ "《""$dirName""》" ]]; then
+		if [[ $fileName =~ "$dir_name" ]]; then
 			# 拷贝文件
 			cp "$DIR_PATH/$fileName" "$dirName"
 			continue
 		fi
 	done
+
 done
 
-echo "拷贝完毕~ 🤗"
+echo "拷贝完毕~"
